@@ -1,18 +1,25 @@
-import sys
+from django.shortcuts import render
 
 
-def readCsv():
+def home(request):
+    if request.method == 'POST' and request.FILES['myfile']:
+        myfile = request.FILES['myfile']
+        byte_str = myfile.file.read()
+        # Convert to a "unicode" object
+        text_obj = byte_str.decode('UTF-8')
+        read_csv(text_obj.splitlines())
+
+        return render(request, 'home.html')
+    else:
+        # Nothing to do
+        pass
+
+    return render(request, 'home.html')
+
+
+def read_csv(file):
     all_data = []
     columns_descriptions = []
-
-    file_path = "EntradaMenor.csv"
-
-    # Treating error while opening the file.
-    try:
-        file = open(file_path, "r")
-    except IOError:
-        print("\nNão foi possível abrir o arquivo com o caminho indicado:", file_path)
-        sys.exit()
 
     # Save all csv data in a list of lists, removing '\n' at the last line element.
     for line in file:
@@ -24,9 +31,29 @@ def readCsv():
             line_splitted[-1] = line_splitted[-1].strip("\n")
             all_data.append(line_splitted)
 
-    file.close()
+    print(columns_descriptions)
+    print(all_data)
 
-    return all_data, columns_descriptions
+    print("ORDENAÇÃO selectionSort")
+
+    sorted_data = selectionSort(all_data)
+
+    for data in sorted_data:
+        print(data)
+
+    print("ORDENAÇÃO insertionSort")
+
+    sorted_data = insertionSort(all_data)
+
+    for data in sorted_data:
+        print(data)
+
+    print("ORDENAÇÃO bubbleSort")
+
+    sorted_data = bubbleSort(all_data)
+
+    for data in sorted_data:
+        print(data)
 
 
 def selectionSort(dataset):
@@ -76,10 +103,3 @@ def bubbleSort(dataset):
         final_position_to_be_checked = final_position_to_be_checked - 1
 
     return dataset
-
-
-dataset, dataset_descriptions = readCsv()
-sorted_data = bubbleSort(dataset)
-
-for data in sorted_data:
-    print(data[0])
