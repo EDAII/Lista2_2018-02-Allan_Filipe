@@ -7,9 +7,34 @@ def home(request):
         byte_str = myfile.file.read()
         # Convert to a "unicode" object
         text_obj = byte_str.decode('UTF-8')
-        read_csv(text_obj.splitlines())
+        columns_descriptions, all_data = read_csv(text_obj.splitlines())
 
-        return render(request, 'home.html')
+        print("ORDENAÇÃO selectionSort")
+
+        sorted_data, selection_sort_time = selectionSort(all_data)
+
+        for data in sorted_data:
+            print(data)
+
+        print("ORDENAÇÃO insertionSort")
+
+        sorted_data, insertion_sort_time = insertionSort(all_data)
+
+        for data in sorted_data:
+            print(data)
+
+        print("ORDENAÇÃO bubbleSort")
+
+        sorted_data, bubble_sort_time = bubbleSort(all_data)
+
+        for data in sorted_data:
+            print(data)
+
+        return render(request, 'result.html', {'columns_descriptions': columns_descriptions,
+                                               'sorted_data': sorted_data,
+                                               'selection_sort_time': selection_sort_time,
+                                               'insertion_sort_time': insertion_sort_time,
+                                               'bubble_sort_time': bubble_sort_time})
     else:
         # Nothing to do
         pass
@@ -31,32 +56,11 @@ def read_csv(file):
             line_splitted[-1] = line_splitted[-1].strip("\n")
             all_data.append(line_splitted)
 
-    print(columns_descriptions)
-    print(all_data)
-
-    print("ORDENAÇÃO selectionSort")
-
-    sorted_data = selectionSort(all_data)
-
-    for data in sorted_data:
-        print(data)
-
-    print("ORDENAÇÃO insertionSort")
-
-    sorted_data = insertionSort(all_data)
-
-    for data in sorted_data:
-        print(data)
-
-    print("ORDENAÇÃO bubbleSort")
-
-    sorted_data = bubbleSort(all_data)
-
-    for data in sorted_data:
-        print(data)
+    return columns_descriptions, all_data
 
 
 def selectionSort(dataset):
+    time = 76.45
     for currently_checked_position in range(len(dataset)):
         lower_position = currently_checked_position
 
@@ -68,10 +72,11 @@ def selectionSort(dataset):
         dataset[currently_checked_position] = dataset[lower_position]
         dataset[lower_position] = temporary_register
 
-    return dataset
+    return dataset, time
 
 
 def insertionSort(dataset):
+    time = 45.21
     for currently_checked_position in range(1, len(dataset)):
         currently_checked_data = dataset[currently_checked_position]
 
@@ -83,10 +88,11 @@ def insertionSort(dataset):
 
         dataset[position_searched + 1] = currently_checked_data
 
-    return dataset
+    return dataset, time
 
 
 def bubbleSort(dataset):
+    time = 96.789
     final_position_to_be_checked = len(dataset) - 1
     occurred_swap = True
 
@@ -102,4 +108,4 @@ def bubbleSort(dataset):
 
         final_position_to_be_checked = final_position_to_be_checked - 1
 
-    return dataset
+    return dataset, time

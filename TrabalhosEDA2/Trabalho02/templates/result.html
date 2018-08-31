@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Resultados CSVs</title>
+    {% load static %}
+    <script type="text/javascript" src="{% static 'Trabalho02/javascript.js' %}"></script>
+    <!-- My CSS -->
+    <link rel="stylesheet" type="text/css" href="{% static 'Trabalho02/style.css' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+</head>
+
+<body>
+
+    <table id="sortedData" class="table table-striped table-bordered" style="width:80%">
+            <thead>
+                <tr>
+                    {%for column_description in columns_descriptions %}
+                    <th>{{ column_description }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {%for line in sorted_data %}
+                <tr>
+                    {%for column in line %}
+                        <td> {{ column }} </td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    {%for column_description in columns_descriptions %}
+                    <th>{{ column_description }}</th>
+                    {% endfor %}
+                </tr>
+            </tfoot>
+        </table>
+
+<form method="get">
+    <button type="submit" class="btn" href="{% url 'home' %}">Return to Home</button>
+</form>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+<script>
+$(document).ready(function() {
+    $('#sortedData').DataTable();
+} );
+</script>
+</body>
+</html>
