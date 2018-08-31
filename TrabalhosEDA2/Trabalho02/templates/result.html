@@ -13,19 +13,20 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 </head>
 
-<body>
+<body class="background-result">
     <h3>Selection Sort Time: <span class="badge badge-secondary">{{ selection_sort_time }}</span></h3>
     <h3>Insertion Sort Time: <span class="badge badge-secondary">{{ insertion_sort_time }}</span></h3>
     <h3>Bubble Sort Time: <span class="badge badge-secondary">{{ bubble_sort_time }}</span></h3>
+    <h3>Shell Sort Time: <span class="badge badge-secondary">{{ shell_sort_time }}</span></h3>
 
     <br>
     <br>
 
-    <table id="sortedData" class="table table-striped table-bordered" style="width:80%">
+    <table id="sortedData" class="table table-striped table-bordered" style="width:80%" bgcolor="black">
         <thead>
             <tr>
                 {%for column_description in columns_descriptions %}
-                <th>{{ column_description }}</th>
+                <th bgcolor="white">{{ column_description }}</th>
                 {% endfor %}
             </tr>
         </thead>
@@ -33,7 +34,7 @@
             {%for line in sorted_data %}
             <tr>
                 {%for column in line %}
-                    <td> {{ column }} </td>
+                    <td bgcolor="white"> {{ column }} </td>
                 {% endfor %}
             </tr>
             {% endfor %}
@@ -41,7 +42,7 @@
         <tfoot>
             <tr>
                 {%for column_description in columns_descriptions %}
-                <th>{{ column_description }}</th>
+                <th bgcolor="white">{{ column_description }}</th>
                 {% endfor %}
             </tr>
         </tfoot>
@@ -50,7 +51,7 @@
     <br>
     <br>
 
-    <a href="{% url 'home' %}"><button class="btn">Return to Home</button></a>
+    <a href="{% url 'home' %}"><button class="btn" >Return to Home</button></a>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

@@ -11,12 +11,12 @@
   <link rel="stylesheet" type="text/css" href="{% static 'Trabalho02/style.css' %}">
 </head>
 
-<body>
+<body class="background background-home">
 
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      <input required type="file" name="myfile" accept=".csv">
-      <button class="btn" type="submit">Upload</button>
+      <input required class="button-color" type="file" name="myfile" accept=".csv">
+      <button class="btn" type="submit" >Upload</button>
     </form>
 
     <!-- Optional JavaScript -->

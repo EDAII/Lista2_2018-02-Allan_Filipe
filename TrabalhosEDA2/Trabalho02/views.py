@@ -14,6 +14,7 @@ def home(request):
 
         sorted_data, selection_sort_time = selectionSort(all_data)
 
+       #  print("Shell sort\n")
         # for data in sorted_data:
         #     print(data)
 
@@ -30,12 +31,14 @@ def home(request):
         #
         # # for data in sorted_data:
         # #     print(data)
+        sorted_data, shell_sort_time = shellSort(all_data)
 
         return render(request, 'result.html', {'columns_descriptions': columns_descriptions,
                                                'sorted_data': sorted_data,
                                                'selection_sort_time': selection_sort_time,
                                                'insertion_sort_time': insertion_sort_time,
-                                               'bubble_sort_time': bubble_sort_time})
+                                               'bubble_sort_time': bubble_sort_time,
+                                               'shell_sort_time': shell_sort_time})
     else:
         # Nothing to do
         pass
@@ -110,6 +113,24 @@ def bubbleSort(dataset):
                 dataset[currently_checked_position+1] = temporary
 
         final_position_to_be_checked = final_position_to_be_checked - 1
+
+    time_final = time.time() - time_initial
+    return dataset, time_final
+
+def shellSort(dataset):
+    time_initial = time.time()
+
+    dataset_length = len(dataset)
+    gap = int(dataset_length / 2)
+    while gap > 0:
+            for num in range(gap, dataset_length):
+                data = dataset[num]
+                position = num
+                while position >= gap and int(data[0]) < int(dataset[position - gap][0]):
+                    dataset[position] = dataset[position - gap]
+                    position = position - gap
+                    dataset[position] = data
+            gap = int(gap / 2)
 
     time_final = time.time() - time_initial
     return dataset, time_final
