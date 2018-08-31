@@ -1,4 +1,5 @@
 from django.shortcuts import render
+import time
 
 
 def home(request):
@@ -60,7 +61,7 @@ def read_csv(file):
 
 
 def selectionSort(dataset):
-    time = 76.45
+    time_initial = time.time()
     for currently_checked_position in range(len(dataset)):
         lower_position = currently_checked_position
 
@@ -72,11 +73,12 @@ def selectionSort(dataset):
         dataset[currently_checked_position] = dataset[lower_position]
         dataset[lower_position] = temporary_register
 
-    return dataset, time
+    time_final = time.time() - time_initial
+    return dataset, time_final
 
 
 def insertionSort(dataset):
-    time = 45.21
+    time_initial = time.time()
     for currently_checked_position in range(1, len(dataset)):
         currently_checked_data = dataset[currently_checked_position]
 
@@ -88,11 +90,12 @@ def insertionSort(dataset):
 
         dataset[position_searched + 1] = currently_checked_data
 
-    return dataset, time
+    time_final = time.time() - time_initial
+    return dataset, time_final
 
 
 def bubbleSort(dataset):
-    time = 96.789
+    time_initial = time.time()
     final_position_to_be_checked = len(dataset) - 1
     occurred_swap = True
 
@@ -108,4 +111,5 @@ def bubbleSort(dataset):
 
         final_position_to_be_checked = final_position_to_be_checked - 1
 
-    return dataset, time
+    time_final = time.time() - time_initial
+    return dataset, time_final

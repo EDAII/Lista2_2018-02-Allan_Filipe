@@ -14,6 +14,12 @@
 </head>
 
 <body>
+    <h3>Selection Sort Time: <span class="badge badge-secondary">{{ selection_sort_time }}</span></h3>
+    <h3>Insertion Sort Time: <span class="badge badge-secondary">{{ insertion_sort_time }}</span></h3>
+    <h3>Bubble Sort Time: <span class="badge badge-secondary">{{ bubble_sort_time }}</span></h3>
+
+    <br>
+    <br>
 
     <table id="sortedData" class="table table-striped table-bordered" style="width:80%">
         <thead>
@@ -40,8 +46,10 @@
             </tr>
         </tfoot>
     </table>
+
     <br>
     <br>
+
     <a href="{% url 'home' %}"><button class="btn">Return to Home</button></a>
 
     <!-- Optional JavaScript -->
