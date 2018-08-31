@@ -8,27 +8,27 @@ def home(request):
         # Convert to a "unicode" object
         text_obj = byte_str.decode('UTF-8')
         columns_descriptions, all_data = read_csv(text_obj.splitlines())
-
-        print("ORDENAÇÃO selectionSort")
+        #
+        # print("ORDENAÇÃO selectionSort")
 
         sorted_data, selection_sort_time = selectionSort(all_data)
 
-        for data in sorted_data:
-            print(data)
+        # for data in sorted_data:
+        #     print(data)
 
-        print("ORDENAÇÃO insertionSort")
-
+        # # print("ORDENAÇÃO insertionSort")
+        #
         sorted_data, insertion_sort_time = insertionSort(all_data)
-
-        for data in sorted_data:
-            print(data)
-
-        print("ORDENAÇÃO bubbleSort")
-
+        #
+        # # for data in sorted_data:
+        # #     print(data)
+        #
+        # # print("ORDENAÇÃO bubbleSort")
+        #
         sorted_data, bubble_sort_time = bubbleSort(all_data)
-
-        for data in sorted_data:
-            print(data)
+        #
+        # # for data in sorted_data:
+        # #     print(data)
 
         return render(request, 'result.html', {'columns_descriptions': columns_descriptions,
                                                'sorted_data': sorted_data,
