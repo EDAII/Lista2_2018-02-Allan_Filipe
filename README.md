@@ -52,4 +52,4 @@ Para a visualização dos resultados foi utilizado o Framework Django da linguag
 Foram implementados os algorítmos: Insertion Sort, Selection Sort, Bubble Sort e Shell Sort.
 
 ##### Observações
-Seguem dois ".csv" de exemplo de entrada para a aplicação, um com mais registros e outro menor.
+Seguem três arquivos ".csv" de exemplo de entrada para a aplicação, um com mais registros, outro menor e outro ordenado.
