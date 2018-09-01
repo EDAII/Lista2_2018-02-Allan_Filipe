@@ -15,8 +15,15 @@
 
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
-      <input required class="button-color" type="file" name="myfile" accept=".csv">
-      <button class="btn" type="submit" >Upload</button>
+      <div class="input-group mb-3">
+          <div class="custom-file">
+            <input type="file" required class="custom-file-input" id="inputGroupFile02" name="myfile" accept=".csv">
+            <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+          </div>
+          <div class="input-group-append">
+            <button class="input-group-text" type="submit">Upload</button>
+          </div>
+      </div>
     </form>
 
     <!-- Optional JavaScript -->

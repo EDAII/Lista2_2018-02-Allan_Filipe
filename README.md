@@ -37,6 +37,8 @@ Exemplo:
 
 - uma tabela que oferece os registros devidamente ordenados e a possibilidade de busca de qualquer registro por qualquer uma das colunas existentes, além de exportar a tabela ordenada para arquivos das extensões: ".csv", excell, ".pdf". É possível, também, copiar a tabela ou realizar um printscreen.  
 
+É muito importante ressalta que os algorítmos O(n²) aumentam o tempo de execução de forma exponencial dependendo da quantidade de dados, de modo que, um aumento de apenas 1000 dados, por exemplo, pode causar uma demora extremamente maior no tempo de execução.
+
 ##### Visualização
 
 Para a visualização dos resultados foi utilizado o Framework Django da linguagem de programação Python, de modo que foi possível criar uma interface Web estilizada por meio do framework Bootstrap.  
