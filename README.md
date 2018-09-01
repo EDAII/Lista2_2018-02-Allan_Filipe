@@ -9,9 +9,13 @@
 | 15/0059213 | Filipe Coelho Hilário Barcelos | @FilipeKN4 |
 
 ##### Para executar
+O ambiente deve ser configurado para a utilização do framework Django na versão 2.1. Após a configuração, deve-se executar o comando abaixo: 
+
 ```sh
-$ python3 Lista2.py
+$ python3 manage.py runserver
 ```
+
+Após a execução abra o link do servidor em http://127.0.0.1:8000/.
 
 ##### Descrição
 A aplicação consiste na leitura de um arquivo de registros ".csv", no qual deve seguir alguns padrões de tratamento de dados antes de ser utilizado como entrada nesse software. As regras de formatação do arquivo de registro são:
